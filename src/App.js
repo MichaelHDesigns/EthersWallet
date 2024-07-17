@@ -1,4 +1,3 @@
-// src/App.js
 import React, { useState } from 'react';
 import { Web3Provider } from '@ethersproject/providers';
 import { formatEther } from '@ethersproject/units';
@@ -18,7 +17,7 @@ function App() {
         setAddress(userAddress);
 
         const userBalance = await signer.getBalance();
-        setBalance(formatEther(userBalance));
+        setBalance(parseFloat(formatEther(userBalance)).toFixed(6)); // Display balance with 6 decimal places
       } catch (err) {
         setError(err.message);
       }
