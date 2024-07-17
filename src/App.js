@@ -17,7 +17,10 @@ function App() {
         setAddress(userAddress);
 
         const userBalance = await signer.getBalance();
-        setBalance(parseFloat(formatEther(userBalance)).toFixed(6)); // Display balance with 6 decimal places
+        console.log("Raw balance:", userBalance.toString()); // Debug: log raw balance
+        const formattedBalance = formatEther(userBalance);
+        console.log("Formatted balance:", formattedBalance); // Debug: log formatted balance
+        setBalance(parseFloat(formattedBalance).toFixed(6)); // Display balance with 6 decimal places
       } catch (err) {
         setError(err.message);
       }
